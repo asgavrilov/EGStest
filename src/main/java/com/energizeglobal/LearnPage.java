@@ -1,6 +1,7 @@
 package com.energizeglobal;
 
 import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.WebDriverRunner;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 
@@ -16,11 +17,11 @@ public class LearnPage {
     private static final By COUNTRY_SELECT = By.cssSelector("select[id='countrySelect']");
     private static final By CONTINUE1 = By.cssSelector("input[id='continue_first']");
     //step2 elements
-    private static final By STEP2_SELECT = By.cssSelector("select[id='step2']");
+    private static final By STEP2_SELECT = By.cssSelector("select#step2");
     private static final By STEP2_OPTION = By.cssSelector("option[value='120']");
-    private static final By CONTINUE2 = By.cssSelector("input[id='continue2']");
+    private static final By CONTINUE2 = By.cssSelector("input#continue2");
     //step3 elements
-    private static final By STEP3_SELECT = By.cssSelector("select[name='step3']");
+    private static final By STEP3_SELECT = By.cssSelector("#step3");
     private static final By STEP3_OPTION = By.cssSelector("option[value='3']");
     private static final By CONTINUE3 = By.cssSelector("input[id='continue3']");
     //step4 elements
@@ -37,19 +38,20 @@ public class LearnPage {
     private static int Timeout = 30000;
 
     public LearnPage removeAgreement() {
-       // switchTo().window(1);
+        // switchTo().window(1);
 
-        sleep(10000);
-        JavascriptExecutor jse;
-        jse = (JavascriptExecutor) getWebDriver();
+//        sleep(10000);
+//        JavascriptExecutor jse;
+//        jse = (JavascriptExecutor) getWebDriver();
 //        jse.executeScript("document.querySelector('.truste_overlay').remove();");
-        jse.executeScript("document.querySelector('.truste_box_overlay').remove();");
+        //jse.executeScript("document.querySelector('.truste_box_overlay').remove();");
 
-    return page(LearnPage.class);
+        return page(LearnPage.class);
     }
+
     public LearnPage step0() {
-
-
+        switchTo().window(WebDriverRunner.getWebDriver().getWindowHandle());
+        $(CONTINUE0).isDisplayed();
         $(CONTINUE0).waitUntil(Condition.exist, Timeout);
         $(CONTINUE0).click();
 
@@ -57,35 +59,36 @@ public class LearnPage {
     }
 
 
-    public LearnPage step1() {
-
+    public void step1() {
+        switchTo().window(WebDriverRunner.getWebDriver().getWindowHandle());
         $(CONTINUE1).waitUntil(Condition.enabled, Timeout);
-        $(COUNTRY_SELECT).selectOption(898938296);
+        $(COUNTRY_SELECT).selectOption("Russia");
         $(CONTINUE1).click();
 
-        return page(LearnPage.class);
+//        return page(LearnPage.class);
     }
 
-    public LearnPage step2() {
+    public void step2() {
 
-        $(CONTINUE2).waitUntil(Condition.enabled, Timeout);
-        $(STEP2_SELECT).selectOption(String.valueOf(STEP2_OPTION));
+//        switchTo().window(WebDriverRunner.getWebDriver().getWindowHandle());
+        $(CONTINUE3).waitUntil(Condition.visible, Timeout);
+        $(STEP2_SELECT).selectOption(120);
         $(CONTINUE2).click();
 
-        return page(LearnPage.class);
+//        return page(LearnPage.class);
     }
 
-    public LearnPage step3() {
-
+    public void step3() {
+        switchTo().window(WebDriverRunner.getWebDriver().getWindowHandle());
         $(CONTINUE3).waitUntil(Condition.enabled, Timeout);
-        $(STEP2_SELECT).selectOption(String.valueOf(STEP3_OPTION));
+        $(STEP3_SELECT).selectOption(String.valueOf(STEP3_OPTION));
         $(CONTINUE2).click();
 
-        return page(LearnPage.class);
+//        return page(LearnPage.class);
     }
 
     public LearnPage step4() {
-
+        switchTo().window(WebDriverRunner.getWebDriver().getWindowHandle());
         $(CONTINUE4).waitUntil(Condition.enabled, Timeout);
         $(SEARCH_INPUT).sendKeys(KEY);
         $(SEARCH_BUTTON).click();
@@ -97,7 +100,7 @@ public class LearnPage {
     }
 
     public LearnPage step5() {
-
+        switchTo().window(WebDriverRunner.getWebDriver().getWindowHandle());
         $(LIVE_VIRTUAL_TRAINING_CHECKBOX).waitUntil(Condition.enabled, Timeout);
         $(LIVE_VIRTUAL_TRAINING_CHECKBOX).click();
         $(CONTINUE5).click();
@@ -106,7 +109,7 @@ public class LearnPage {
     }
 
     public LearnPage step6() {
-
+        switchTo().window(WebDriverRunner.getWebDriver().getWindowHandle());
         $(SELECT6).waitUntil(Condition.enabled, Timeout);
         $(SELECT6).shouldHave(Condition.attribute("Russia"));
 

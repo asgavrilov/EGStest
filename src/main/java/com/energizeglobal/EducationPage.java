@@ -56,7 +56,7 @@ public class EducationPage {
 // получаем дескриптор нового окна
 //        newWindowsSet.removeAll(oldWindowsSet);
 ////        String newWindowHandle = newWindowsSet.iterator().next();
-        switchTo().window("Demand Capture");
+        switchTo().window(1);
 
         return page(LearnPage.class);
     }
