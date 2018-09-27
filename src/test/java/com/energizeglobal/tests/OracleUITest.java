@@ -24,13 +24,15 @@ public class OracleUITest {
 
         MainPage mainPage = new MainPage();
         mainPage.goToMainPage();
+        mainPage.clickAgreement();
         mainPage.navigateToJavaItem();
 
         EducationPage educationPage = new EducationPage();
+        educationPage.removeAgreement();
         educationPage.requestTraining();
 
         LearnPage learnPage = new LearnPage();
-
+        learnPage.removeAgreement();
         learnPage.step0();
         learnPage.step1();
         learnPage.step2();

@@ -2,9 +2,10 @@ package com.energizeglobal;
 
 import com.codeborne.selenide.Condition;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.page;
+import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
 public class LearnPage {
 
@@ -35,7 +36,19 @@ public class LearnPage {
     private static final By SELECT6 = By.cssSelector("select[name='country']");
     private static int Timeout = 30000;
 
+    public LearnPage removeAgreement() {
+       // switchTo().window(1);
+
+        sleep(10000);
+        JavascriptExecutor jse;
+        jse = (JavascriptExecutor) getWebDriver();
+//        jse.executeScript("document.querySelector('.truste_overlay').remove();");
+        jse.executeScript("document.querySelector('.truste_box_overlay').remove();");
+
+    return page(LearnPage.class);
+    }
     public LearnPage step0() {
+
 
         $(CONTINUE0).waitUntil(Condition.exist, Timeout);
         $(CONTINUE0).click();
