@@ -41,6 +41,7 @@ public class LearnPage {
 
 
     public LearnPage step0() {
+
         switchTo().window(WebDriverRunner.getWebDriver().getWindowHandle());
         $(CONTINUE0).isDisplayed();
         $(CONTINUE0).waitUntil(Condition.exist, Timeout);
