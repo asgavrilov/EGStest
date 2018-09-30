@@ -71,7 +71,7 @@ public class LearnPage {
     public void step2() {
 
 //        switchTo().window(WebDriverRunner.getWebDriver().getWindowHandle());
-        $(CONTINUE3).waitUntil(Condition.visible, Timeout);
+        $(CONTINUE2).waitUntil(Condition.visible, Timeout);
         $(STEP2_SELECT).selectOption(120);
         $(CONTINUE2).click();
 
