@@ -21,29 +21,27 @@ public class MainPage extends BasePage<MainPage> {
     private static final By JAVA_ITEM = By.xpath("//div[@data-lbl='software-training']/ul/li/a[@data-lbl='java']");
     private static final String URL = "http://oracle.com";
     private static final int TIMEOUT = 30000;
-   // private SelenideElement AgreementButton = $$(".pdynamicbutton .call").get(1);
+
 
     public MainPage goToMainPage() {
         open(URL);
         return this;
     }
 
-    public  MainPage clickAgreement() {
+    public MainPage clickAgreement() {
         JavascriptExecutor jse;
-        jse = (JavascriptExecutor)getWebDriver();
+        jse = (JavascriptExecutor) getWebDriver();
         jse.executeScript("document.querySelector('.truste_box_overlay').remove();");
         jse.executeScript("document.querySelector('.truste_overlay').remove();");
-
-        //AgreementButton.waitUntil(Condition.appear, TIMEOUT);
-        //AgreementButton.click();
 
         return page(MainPage.class);
     }
 
     public EducationPage navigateToJavaItem() {
 
-        $(MENU_BUTTON).contextClick().$(TRAINING_ITEM).contextClick().$(ST_ITEM).contextClick().$(JAVA_ITEM).click();
-
+        $(MENU_BUTTON).contextClick().$(TRAINING_ITEM)
+                .contextClick().$(ST_ITEM)
+                .contextClick().$(JAVA_ITEM).click();
 
         return page(EducationPage.class);
     }
